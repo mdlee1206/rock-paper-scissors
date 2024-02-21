@@ -22,9 +22,9 @@ function playRound(getPlayerChoice, getComputerChoice) {
     const playerWin = checkPlayerWin(playerChoice, computerChoice);
 
     if (playerWin) {
-        return `You win! ${playerChoice} beats ${computerChoice}.`;
+        return 'player';
     } else {
-        return `You lose! ${computerChoice} beats ${playerChoice}.`;
+        return 'computer';
     }
 
 }
@@ -42,5 +42,25 @@ function checkPlayerWin(playerChoice, computerChoice) {
         return true;
     } else {
         return false;
+    }
+}
+
+function playGame() {
+    let playerWinCount = 0;
+    let computerWinCount = 0;
+
+    for (let i = 1; i <= 5; i++) {
+        let winner = playRound(getPlayerChoice, getComputerChoice);
+        if (winner === 'player') {
+            playerWinCount += 1;
+        } else {
+            computerWinCount += 1;
+        }
+    }
+
+    if (playerWinCount > computerWinCount) {
+        return `You won ${playerWinCount} out of 5 games!`;
+    } else {
+        return `You won ${playerWinCount} out of 5 games...`;
     }
 }
