@@ -19,21 +19,28 @@ function getPlayerChoice() {
 function playRound(getPlayerChoice, getComputerChoice) {
     const playerChoice = getPlayerChoice();
     const computerChoice = getComputerChoice();
+    const playerWin = checkPlayerWin(playerChoice, computerChoice);
+
+    if (playerWin) {
+        return `You win! ${playerChoice} beats ${computerChoice}.`;
+    } else {
+        return `You lose! ${computerChoice} beats ${playerChoice}.`;
+    }
 
 }
 
 function checkPlayerWin(playerChoice, computerChoice) {
     if (playerChoice === computerChoice) {
-        return 0
+        return false;
     } else if ((playerChoice === 'Rock' && computerChoice === 'Paper') || 
                 (playerChoice === 'Scissors' && computerChoice === 'Rock') || 
                 (playerChoice === 'Paper' && computerChoice === 'Scissors')) {
-        return 0;
+        return false;
     } else if ((playerChoice === 'Rock' && computerChoice === 'Scissors') || 
                 (playerChoice === 'Scissors' && computerChoice === 'Paper') || 
                 (playerChoice === 'Paper' && computerChoice === 'Rock')) {
-        return 1;
+        return true;
     } else {
-        return 0;
+        return false;
     }
 }
