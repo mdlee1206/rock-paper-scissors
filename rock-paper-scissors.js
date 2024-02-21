@@ -20,21 +20,20 @@ function playRound(getPlayerChoice, getComputerChoice) {
     const playerChoice = getPlayerChoice();
     const computerChoice = getComputerChoice();
 
+}
+
+function checkPlayerWin(playerChoice, computerChoice) {
     if (playerChoice === computerChoice) {
-        return `It's a tie! Both selected ${playerChoice}.`;
-    } else if (playerChoice === 'Rock' && computerChoice === 'Paper') {
-        return `You lose! ${computerChoice} beats ${playerChoice}.`;
-    } else if (playerChoice === 'Rock' && computerChoice === 'Scissors') {
-        return `You win! ${playerChoice} beats ${computerChoice}.`;
-    } else if (playerChoice === 'Scissors' && computerChoice === 'Rock') {
-        return `You lose! ${computerChoice} beats ${playerChoice}.`;
-    } else if (playerChoice === 'Scissors' && computerChoice === 'Paper') {
-        return `You win! ${playerChoice} beats ${computerChoice}.`;
-    } else if (playerChoice === 'Paper' && computerChoice === 'Rock') {
-        return `You win! ${playerChoice} beats ${computerChoice}.`;
-    } else if (playerChoice === 'Paper' && computerChoice === 'Scissors') {
-        return `You lose! ${computerChoice} beats ${playerChoice}.`;
+        return 0
+    } else if ((playerChoice === 'Rock' && computerChoice === 'Paper') || 
+                (playerChoice === 'Scissors' && computerChoice === 'Rock') || 
+                (playerChoice === 'Paper' && computerChoice === 'Scissors')) {
+        return 0;
+    } else if ((playerChoice === 'Rock' && computerChoice === 'Scissors') || 
+                (playerChoice === 'Scissors' && computerChoice === 'Paper') || 
+                (playerChoice === 'Paper' && computerChoice === 'Rock')) {
+        return 1;
     } else {
-        return `You selected ${playerChoice}, and the computer selected ${computerChoice}.`
+        return 0;
     }
 }
